@@ -77,5 +77,31 @@ def plot(a, b, rule, func):
 
 
 
-plot(0,math.pi, trapezium_rules, func)
-plot(0, math.pi, simpson, func)
+# plot(0,math.pi, trapezium_rules, func)
+# plot(0, math.pi, simpson, func)
+
+def error_control_trapezium(a,b, func):
+    error = 50
+    n = 1
+    while (error >=4.1 or error <4):
+        n*=2
+        s = trapezium_rules(a, b, n, func)
+        s_line = trapezium_rules(a, b, 2*n, func)
+        s_double_line = trapezium_rules(a, b, 4*n, func)
+        error = (s_line - s)/(s_double_line-s_line)
+    return n
+
+def error_control_simpson(a,b, func):
+    error = 50
+    n = 1
+    while (error >=16.1 or error <16):
+        n*=2
+        s = simpson(a, b, n, func)
+        s_line = simpson(a, b, 2*n, func)
+        s_double_line = simpson(a, b, 4*n, func)
+        error = (s_line - s)/(s_double_line-s_line)
+    return n
+
+
+print(error_control_trapezium(0, math.pi, func))
+print(error_control_simpson(0, math.pi, func))
