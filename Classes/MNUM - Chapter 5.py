@@ -45,5 +45,5 @@ def calculate_qc_and_error(x, y, a, b, h, denom, func, method):
     return qc, error
 
 print(calculate_qc_and_error(0, 0, 0, 1.4, 0.1, 1, math_function, euler_first_order))
-print(calculate_qc_and_error(0, 0, 0, 1.4, 0.1, 1, math_function, rk_second_order))
-print(calculate_qc_and_error(0, 0, 0, 1.4, 0.1, 1, math_function, rk_fourth_order))
+print(calculate_qc_and_error(0, 0, 0, 1.4, 0.1, 3, math_function, rk_second_order))
+print(calculate_qc_and_error(0, 0, 0, 1.4, 0.1, 15, math_function, rk_fourth_order))
