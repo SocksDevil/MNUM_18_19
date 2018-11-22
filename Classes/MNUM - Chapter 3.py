@@ -39,27 +39,31 @@ def gauss_jacobi(x1, x2, x3, func1, func2, func3, error):
     prev_x1 = 500
     prev_x2 = 500
     prev_x3 = 500
-    while (abs(func1(x2, x3) - func1(prev_x2, prev_x3)) > error or abs(func2(x1, x3) - func2(prev_x1, prev_x3)) > error or abs(func3(x1,x2) - func3(prev_x1, prev_x2)) > error):
+    counter = 0
+    while (abs(x1 - prev_x1) > error or abs(x2 - prev_x2) > error or abs(x3 - prev_x3)> error):
         prev_x1 = x1
         prev_x2 = x2
         prev_x3 = x3
         x1 = func1(prev_x2,prev_x3)
         x2 = func2(prev_x1, prev_x3)
         x3 = func3(prev_x1, prev_x2)
-    return x1, x2, x3
+        counter+=1
+    return x1, x2, x3, counter
 
 def gauss_seidel(x1, x2, x3, func1, func2, func3, error):
     prev_x1 = 500
     prev_x2 = 500
     prev_x3 = 500
-    while (abs(func1(x2, x3) - func1(prev_x2, prev_x3)) > error or abs(func2(x1, x3) - func2(prev_x1, prev_x3)) > error or abs(func3(x1,x2) - func3(prev_x1, prev_x2)) > error):
+    counter = 0
+    while (abs(x1 - prev_x1) > error or abs(x2 - prev_x2) > error or abs(x3 - prev_x3)> error):
         prev_x1 = x1
         prev_x2 = x2
         prev_x3 = x3
         x1 = func1(x2,x3)
         x2 = func2(x1, x3)
         x3 = func3(x1, x2)
-    return x1, x2, x3
+        counter+=1
+    return x1, x2, x3,counter
 
     
 
