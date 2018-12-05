@@ -42,7 +42,7 @@ def func_dev_y(x, y):
     return 2 * y - 2 * x - 6
 
 def func_double_y_x(x, y):
-    return 2
+    return -2
 
 def func_double_y_y(x, y):
     return 2
@@ -97,7 +97,9 @@ def quadric(x, y, gradient, hamilton, error):
         prev_x = x
         prev_y = y
         H = 1 / (hamilton[0][0](prev_x, prev_y) * hamilton[1][1](prev_x, prev_y) - hamilton[1][0](prev_x, prev_y)*hamilton[0][1](prev_x, prev_y))
-        print(H)
+        x = prev_x - H * gradient[0](prev_x, prev_y)
+        y = prev_y - H * gradient[1](prev_x, prev_y)
+    return x,y
 
 
 print(quadric(1, 1, [func_dev_x, func_dev_y],[[func_double_x_x, func_double_x_y], [func_double_y_x, func_double_y_y]], 10**(-3)))
