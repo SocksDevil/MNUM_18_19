@@ -1,12 +1,12 @@
 import math
 def func_x(x, y, z, t):
-    return (1 + y + z + t)/4.5
+    return (1 + y + z -t)/4.5   
 
 def func_y(x, y, z, t):
     return (-1 + x - z + t)/4.5
 
 def func_z(x, y, z, t):
-    return (-1 + x + 2 * y + t)/4.5
+     return (-1 + x - 2*y + t)/4.5
 
 def func_t(x, y, z, t):
     return (-2*x + y + z)/4.5
@@ -24,7 +24,7 @@ def gauss_jacobi(x, y, z, t, func_x, func_y, func_z, func_t):
         t = func_t(prev_x, prev_y, prev_z,prev_t)
         print(x, y, z, t)
 
-# gauss_jacobi(0.25, 0.25, 0.25, 0.25, func_x, func_y, func_z, func_t)
+gauss_jacobi(0.25, 0.25, 0.25, 0.25, func_x, func_y, func_z, func_t)
 
 #Exercise 3 c
 
