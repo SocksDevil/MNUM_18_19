@@ -86,4 +86,43 @@ def simpson(a, b, h, func):
     integral+=func(a) + func(b)
     integral*=h/3
     return integral
-print(simpson(0, 2, 0.125, math_ex_6))
+# print(simpson(0, 2, 0.125, math_ex_6))
+
+
+def func_y(t, y, z):
+    return z
+
+def func_z(t, y, z):
+    return (0.5 + t * t + t*z)
+
+def euler(t, y, z, h, func_y, func_z):
+    for _ in range(0,2):
+        prev_y, prev_z = y, z
+        y = y + h * func_y(t, prev_y, prev_z)
+        z = z + h * func_z(t, prev_y, prev_z)
+        t = t + h
+        print(t, y, z)
+
+def rk4(t, y, z, h, func_y, func_z):
+    for _ in range(0, 2):
+        d1_y = h * func_y(t, y, z)
+        d1_z = h * func_z(t, y, z)
+
+        d2_y = h * func_y(t + h/2, y + d1_y/2, z + d1_z/2)
+        d2_z = h * func_z(t + h/2, y + d1_y/2, z + d1_z/2)
+
+        d3_y = h * func_y(t + h/2, y + d2_y/2, z + d2_z/2)
+        d3_z = h * func_z(t + h/2, y + d2_y/2, z + d2_z/2)
+
+        d4_y = h * func_y(t + h, y + d3_y, z + d3_z)
+        d4_z = h * func_z(t + h, y + d3_y, z + d3_z)
+        
+        t = t + h
+        y = y + d1_y/6 + d2_y/3 + d3_y/3 + d4_y/6
+        z = z + d1_z/6 + d2_z/3 + d3_z/3 + d4_z/6
+
+        print(t, y, z)
+
+# euler(0, 0, 1, 0.25, func_y, func_z)
+rk4(0, 0, 1, 0.25, func_y, func_z)
+
