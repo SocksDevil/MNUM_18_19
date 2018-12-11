@@ -16,12 +16,12 @@ def func_t(x, y, z, t):
 
 def gauss_jacobi(x, y, z, t, func_x, func_y, func_z, func_t):
     prev_x, prev_y, prev_z, prev_t = 0,0,0,0
-    for i in range(0, 2):
+    for _ in range(0, 2):
         prev_x, prev_y, prev_z, prev_t = x, y, z, t
-        x = func_x(x, y, z,t)
-        y = func_y(x, y, z,t)
-        z = func_z(x, y, z,t)
-        t = func_t(x, y, z,t)
+        x = func_x(prev_x, prev_y, prev_z,prev_t)
+        y = func_y(prev_x, prev_y, prev_z,prev_t)
+        z = func_z(prev_x, prev_y, prev_z,prev_t)
+        t = func_t(prev_x, prev_y, prev_z,prev_t)
         print(x, y, z, t)
 
 # gauss_jacobi(0.25, 0.25, 0.25, 0.25, func_x, func_y, func_z, func_t)
@@ -33,7 +33,7 @@ def exercise_4(t, T):
 
 def euler(t, T, a, b, h, func):
     n = int(abs(a-b)/h)
-    for i in range(0, n):
+    for _ in range(0, n):
         T = T + h * func(t, T)
         t = t + h
     return t, T
