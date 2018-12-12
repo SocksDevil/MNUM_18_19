@@ -63,3 +63,22 @@ def bissection(a, b , func, error):
     return m
 
 # bissection(1.5, 4.2, math_ex_7, 10**(-5))
+
+def temperature(t, T):
+    return -0.25*(T - 37)
+
+def euler(t, T, h, n, func):
+    for _ in range(0, n):
+        T = T + h * func(t, T)
+        t = t + h
+    return t, T
+
+print(euler(5, 3, 0.4, 2, temperature))
+
+#  Exercise 3
+# for i:1 thru 3 do(
+# A : rowop(A, i, i, 1 - 1/A[i][i]),
+#     for j:1 thru 3 do(
+#     if(i # j) then A : rowop(A, j, i, A[j][i])
+#     )
+# );
