@@ -105,4 +105,4 @@ venv.bak/
 .idea/
 MNUM-test.py
 Analise_Numerica(est2015a).pdf
-
+.vscode/
