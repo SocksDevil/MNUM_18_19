@@ -13,7 +13,7 @@ def aurea(x1, x2, func, error):
             x1 = x3
     return x1, x2
 
-print(aurea(-2, 2, lambda x: pow(x - 4, 2) + pow(x, 4), 10**(-5)))
+# print(aurea(-2, 2, lambda x: pow(x - 4, 2) + pow(x, 4), 10**(-5)))
 
 def exercise_2(x):
     return math.sqrt(1 + 2.5 * 2.5 * math.exp(5 * x))
@@ -59,6 +59,21 @@ def simpson(a, b, h, func):
 # print(simpson(0, 1, 0.125, exercise_1))
 # print(simpson(0, 1, 0.125/2, exercise_1))
 # print(simpson(0, 1, 0.125/4, exercise_1))
+
+
+def picard_peano(x, func, actual_func):
+    for _ in range(0, 10):
+        x = func(x)
+    return actual_func(x)
+
+def newton(x, func, func_dev):
+    for _ in range(0, 10):
+        x = x - func(x)/func_dev(x)
+
+    return func(x)
+
+print(picard_peano(1.5, lambda x: math.log(5 + x), lambda x: math.exp(x) - x - 5))
+print(newton(1.5, lambda x: math.exp(x) - x - 5, lambda x: math.exp(x) - 1))
 
 def exercise_4_C(t, C, T):
     return - math.exp(-0.5/(T + 273)) * C
@@ -128,4 +143,4 @@ def gradient(x, y, h, gradient, func, error):
             flag = False
     print(func(x, y))
 
-gradient(3, 1, 0.1,[exercise_5_dev_x, exercise_5_dev_y], exercise_5, 10**(-3))
+# gradient(3, 1, 0.1,[exercise_5_dev_x, exercise_5_dev_y], exercise_5, 10**(-3))
