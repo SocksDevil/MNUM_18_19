@@ -1,6 +1,21 @@
 import math
 
-def exercise_1(x):
+
+def aurea(x1, x2, func, error):
+    B = (math.sqrt(5) - 1)/2
+    A = B * B
+    while abs(x1 - x2) > error:
+        x3 = x1 + A * (x2 - x1)
+        x4 = x1 + B * (x2 - x1)
+        if(func(x3) < func(x4)):
+            x2 = x4
+        else:
+            x1 = x3
+    return x1, x2
+
+print(aurea(-2, 2, lambda x: pow(x - 4, 2) + pow(x, 4), 10**(-5)))
+
+def exercise_2(x):
     return math.sqrt(1 + 2.5 * 2.5 * math.exp(5 * x))
 
 def trapezium(a, b, h, func):
