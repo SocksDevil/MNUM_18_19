@@ -91,8 +91,8 @@ def multidimensional_search(x, y, h, gradient, min, error, func):
 
 
 def quadric(x, y, gradient, hamilton, error):
-    prev_x = 0
-    prev_y = 0
+    prev_x = 5000
+    prev_y = 5000
     while abs(x - prev_x) > error or abs(y - prev_y) > error:
         prev_x = x
         prev_y = y
@@ -103,6 +103,8 @@ def quadric(x, y, gradient, hamilton, error):
 
 
 # print(quadric(1, 1, [func_dev_x, func_dev_y],[[func_double_x_x, func_double_x_y], [func_double_y_x, func_double_y_y]], 10**(-3)))
+
+print(quadric(0, 0, [lambda x, y: 6*x - y -8, lambda x, y: -x + 11 + 2 * y], [[lambda x, y: 6, lambda x, y:-1], [lambda x, y: -1, lambda x, y: 1]], 10**(-3)))
 
 def lm_func(x, y):
     return pow(x+1, 2)+pow(y-4, 2) 
@@ -159,5 +161,5 @@ def LM(x, y, h, func, gradient, hessian, error):
     return x, y
 
 
-print(LM(0, 0, 0.5, lm_func,[lm_func_dev_x, lm_func_dev_y], hessian_1, 10**(-5)))
-print(LM(1, 1, 0.001, lm_func,[lm_func_2_dev_x, lm_func_2_dev_y], hessian_2, 10**(-3)))
+# print(LM(0, 0, 0.5, lm_func,[lm_func_dev_x, lm_func_dev_y], hessian_1, 10**(-5)))
+# print(LM(1, 1, 0.001, lm_func,[lm_func_2_dev_x, lm_func_2_dev_y], hessian_2, 10**(-3)))

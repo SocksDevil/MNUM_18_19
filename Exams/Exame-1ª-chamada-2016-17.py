@@ -1,5 +1,21 @@
 import math
 
+# Exercicio 1
+# 1. O uso de inteiros para iterar um valor providencia estabilidade ao nível da possibilidade de erros de arredondamentos
+# criando um ambiente estavel de iteração onde não haverá perda de informação devido à precisão da máquina. No entanto, 
+# estes providenciam sempre a necessidade de uso de valores excessivamente elevados para a iteração, fazendo com que
+# o resultado obtido venha acrescido de vários erros.
+# 2. Do ponto de vista da precisão do resultado obtido, a utilização de floats é provavelmente a melhor opção
+# uma vez que estes possibilitam a exigência da precisão no próprio cálculo. No entanto, devido à precisão da
+# máquina ser de facto limitada, o seu uso poderá de facto contribuir para um acrescimo do erro entre iterações,
+# mesmo que a operação se trate de uma soma.
+# 3. O uso da conjunção de floats e inteiro tenta providenciar uma solução que não será melhor que a do ponto
+# 2 uma vez que os erros associados ao uso de floats mantem-se exatamente como anteriormente.
+# 4. O uso de um numero multiplo de 2 para iterar torna o resultado de facto mais robusto a possiveis
+# erros de arredondamento. Assim, a precisão da máquina será bastante mais elevada, e com menos ruído associado.
+
+
+
 def exercise_1_y(x, y):
     return -y + pow(x, 2) - 1.2
 
@@ -29,6 +45,21 @@ def newton(x, y, fx, fx_x, fx_y, fy, fy_x, fy_y, error):
     return x, y
 
 # print(newton(1, 1, exercise_1_y, exercise_1_y_dev_x, exercise_1_y_dev_y, exercise_1_x, exercise_1_x_dev_x, exercise_1_x_dev_y, 10**(-5)))
+
+# Exercicio 3
+# O metodo numerico mais adequado para o problema em causa será o método de Levenberg-Marquardt (metodo LM), que
+# se torna extremamente vantajoso para ser usado em funções deste género, depressões alongadas, uma vez que o uso 
+# da quádrica, permite que esse alongamento seja detetado facilmente.
+# O método LM consiste na combinação de tanto o método do gradiente como o método da quadrica, onde se determina a evolução
+# do processo da seguinte forma: é primeiro inicializado o step do gradiente com um valor elevado , virtualmente decrementando
+# este step quando este se vai aproximando da função objetivo. Assim, é feita uma aproximação
+# progressiva aos valores onde o step da quadrica terá grande impacto. No entanto, sempre que ocorrer um incremento
+# do ponto objetivo, este é ignorando e o step do gradiente é incrementado.
+# Um dos maiores problemas possivelmente associado a este problema será o lançamento de constrições
+# que reduzem o campo de busca a determinadas condições. O método explicado em cima teria de se adaptar ao dominio
+# de cada problema, fazendo com que certos passos tomados não se justificassem de todo.
+
+
 
 def exercise_4(x):
     return pow(x, 7) + 0.5 * x - 0.5

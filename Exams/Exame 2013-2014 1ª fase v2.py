@@ -11,6 +11,27 @@ def picard_peano(x, func):
 
 # picard_peano(4, exercise_1_g)
 
+# Exercicio 4
+# Após a analise do grafico da função a) é possivel observar que ela possui um declive significativamente vertical o 
+# que cria a necessidade de escolher um guess inicial adequado a que este declive nao possua uma grande influencia.
+# A analise do grafico b) possui um ponto de descontinuidade que não será um problema para o método em questão.
+# No entanto, o mesmo problema relacionado com o declive apresenta-se, desta vez sobre a forma horizontal, o que
+# se prova mais uma vez um desafio para um metodo de newton, cujo grande objetivo será calcular tangentes consecutivas
+# numa tentativa de aproximação do valor da raiz.
+
+
+# Exercicio 5
+# Para o cálculo de integrais são conhecidos dois métodos: método dos trapezios e o metodo de simspon. Sobre
+# estes é também conhecido o seu valor de ordem, respetivamente 2 e 4. Deste modo, é sabido que o calculo
+# do quociente de convergencia de um algoritmo de ordem n é: QC: (s' - s)/(s" - s'). Sabendo que QC tem de ser
+# aproximadamente igual a 2 ^ n
+# Deste modo, era possível escolher um destes métodos e calcular o valor do integral para h, para 
+# h/2 e h/4, sendo cada um destes s, s' e s" respetivamente. Assim, seria possivelmente calcular o 
+# quociente de convergencia do mesmo e deste determinar a qualidade da informação do integral.
+# Do mesmo modo seria possivel calcular o erro com E: (s" - s')/(2^n-1). Deste modo, podia parar quando o erro fosse 
+# suficientemente baixo para o critério definido e a precisão necessária.
+
+
 def exercise_6(x):
     return x + pow(x-2, 2)/(math.sin(x) + 4)
 
