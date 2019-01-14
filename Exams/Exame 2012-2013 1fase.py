@@ -1,21 +1,21 @@
 import math
 
 def func_dev_x(x , y, t):
-    return x
+    return y
 
 def func_dev_y(x , y, t):
-    return 0.5 + pow(t, 2) + t * x
+    return 0.5 + pow(t, 2) + t * y
 
 def euler(x, y, t, h, func_dev_x, func_dev_y):
-    for _ in range(0, 2):
+    for _ in range(0, 3):
         print(t, x, y)
         prev_x, prev_y = x, y
         x = x + h * func_dev_x(prev_x, prev_y, t)
         y = y + h * func_dev_y(prev_x, prev_y, t)
         t+= h
-    print(t, x, y)
+    # print(t, x, y)
 
-# euler(1, 0, 1, 0.25, func_dev_x, func_dev_y)
+euler(0, 1, 0, 0.25, func_dev_x, func_dev_y)
 
 def rk4(x, y, t, h, func_dev_x, func_dev_y):
     for _ in range(0, 2):
